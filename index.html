@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ivannnnnn</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="question-screen" class="screen active">
+            <div class="floating-hearts" id="hearts-bg"></div>
+            <div class="content">
+                <div class="character-container">
+                    <div id="speech-bubble" class="speech-bubble">...</div>
+                </div>
+                <h1 class="question-text">hi, miss mo ba ako</h1>
+                <div class="btn-group">
+                    <button id="yes-btn" class="btn btn-yes">yess</button>
+                    <button id="no-btn" class="btn btn-no">no</button>
+                </div>
+                <div class="no-counter">mababawas na taon sa life mo: <span id="count-val">0</span></div>
+            </div>
+        </div>
+
+        <div id="celebration-screen" class="screen">
+            <div class="floating-hearts" id="celeb-bg"></div>
+            <div class="confetti-container" id="confetti"></div>
+            <div class="content text-center">
+                <img src="pic.png" class="character" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+                <h1 id="celeb-text" class="fade-in">hhehheh sabi na e</h1>
+                <button id="next-date-btn" class="btn btn-yes hidden">Open</button>
+            </div>
+        </div>
+
+        <div id="flower-screen" class="screen">
+            <div class="music-player-card">
+                <div class="visualizer-section">
+                    <div class="flower-container">
+                        <div id="flower-speech-bubble" class="speech-bubble">wag mo alisin lahat ng petals ha</div>
+                        <svg id="flower-svg" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="petalGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                    <stop offset="0%" stop-color="#ffb3c1" />
+                                    <stop offset="100%" stop-color="#ff8fab" />
+                                </radialGradient>
+                                <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                    <stop offset="0%" stop-color="#fff176" />
+                                    <stop offset="100%" stop-color="#fbc02d" />
+                                </radialGradient>
+                            </defs>
+                            <path id="stem" d="M50,200 Q50,150 50,80" stroke="#4CAF50" stroke-width="4" fill="none" stroke-linecap="round" />
+                            <path id="leaf-left" d="M50,160 Q30,160 20,140" stroke="#4CAF50" stroke-width="4" fill="none" stroke-linecap="round" />
+                            <path id="leaf-right" d="M50,140 Q70,140 80,120" stroke="#4CAF50" stroke-width="4" fill="none" stroke-linecap="round" />
+                            <g id="petals-group" opacity="0">
+                                <ellipse class="petal" cx="50" cy="50" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(0 50 50)" />
+                                <ellipse class="petal" cx="71" cy="59" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(45 71 59)" />
+                                <ellipse class="petal" cx="80" cy="80" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(90 80 80)" />
+                                <ellipse class="petal" cx="71" cy="101" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(135 71 101)" />
+                                <ellipse class="petal" cx="50" cy="110" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(180 50 110)" />
+                                <ellipse class="petal" cx="29" cy="101" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(225 29 101)" />
+                                <ellipse class="petal" cx="20" cy="80" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(270 20 80)" />
+                                <ellipse class="petal" cx="29" cy="59" rx="12" ry="20" fill="url(#petalGrad)" transform="rotate(315 29 59)" />
+                            </g>
+                            <circle id="flower-center" cx="50" cy="80" r="12" fill="url(#centerGrad)" opacity="0" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="song-details">
+                    <h2 id="song-title">Malay Ko</h2>
+                    <p id="song-artist">Justin Ivan</p>
+                </div>
+
+                <div class="player-controls">
+                    <div class="progress-container">
+                        <div id="music-progress" class="progress-bar"></div>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="ctrl-btn" id="prev-btn">⏮</button>
+                        <button class="ctrl-btn" id="music-btn">▷</button>
+                        <button class="ctrl-btn" id="next-btn">⏭</button>
+                    </div>
+                </div>
+
+                <div class="lyrics-container">
+                    <div id="lyrics-text">Lyrics</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+        <div id="penalty-modal" class="modal-overlay">
+            <div class="modal-box">
+                <div class="modal-icon">💋</div>
+                <h2 class="modal-title">⚠️ WARNING! ⚠️</h2>
+                <p class="modal-text">Kulittttt!<br>Penalty: 5 kisses<br>MOP: Sa ig notes (para alam ko na nakita mo hehehs)</p>
+                <button id="close-penalty" class="btn btn-yes">Ok</button>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
