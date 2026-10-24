@@ -1,0 +1,425 @@
+:root {
+    --pink-main: #ff8fab;
+    --pink-light: #ffc2d1;
+    --pink-dark: #fb6f92;
+    --cream: #fff0f3;
+    --text-color: #5c5c5c;
+    --white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 0.5s ease;
+}
+.screen.active {
+    display: flex;
+}
+.text-center { text-align: center; }
+.heart-loader {
+    font-size: 4rem;
+    animation: beat 0.8s infinite alternate;
+    margin-bottom: 20px;
+}
+.content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+}
+.character-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+.character {
+    font-size: 5rem;
+    transition: transform 0.3s ease;
+    cursor: default;
+    display: inline-block;
+}
+.speech-bubble {
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+.speech-bubble.show { opacity: 1; }
+.question-text {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--pink-dark);
+}
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 100px;
+}
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.btn:active { transform: scale(0.9); }
+.btn-yes {
+    background: var(--pink-main);
+    color: white;
+}
+.btn-no {
+    background: #aaa;
+    color: white;
+    position: relative;
+}
+.no-counter {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 10px;
+}
+.jump { animation: jump 0.5s infinite alternate; }
+.hidden { display: none; }
+@keyframes beat {
+    to { transform: scale(1.2); }
+}
+@keyframes jump {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.floating-hearts {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+.heart-particle {
+    position: absolute;
+    color: var(--pink-light);
+    animation: floatUp 4s linear infinite;
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* MUSIC PLAYER THEME */
+#flower-screen {
+    background-color: #000 !important;
+    color: #fff;
+    overflow-y: auto;
+    justify-content: center;
+}
+
+.music-player-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 30px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease;
+}
+
+.visualizer-section {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.flower-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    filter: drop-shadow(0 0 15px var(--pink-main));
+    transition: filter 0.3s ease;
+}
+
+.flower-container:hover {
+    filter: drop-shadow(0 0 25px var(--pink-main));
+}
+
+#flower-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.song-details h2 {
+    margin: 10px 0 5px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.song-details p {
+    margin: 0 0 25px;
+    font-size: 1rem;
+    opacity: 0.7;
+    color: #eee;
+}
+
+.player-controls {
+    margin-bottom: 30px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--pink-main);
+    box-shadow: 0 0 10px var(--pink-main);
+    transition: width 0.1s linear;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.8;
+}
+
+.ctrl-btn:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+#music-btn {
+    font-size: 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+.petal {
+    pointer-events: all !important;
+    cursor: pointer;
+}
+
+
+
+
+.lyrics-container {
+    margin-top: 20px;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 20px;
+    height: 150px;
+    overflow-y: auto;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 2.5rem;
+    color: rgba(255, 255, 255, 0.4);
+    scroll-behavior: smooth;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+.lyric-line {
+    transition: all 0.4s ease;
+    display: block;
+    padding: 0 10px;
+}
+.lyric-line.active {
+    color: var(--pink-main);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px var(--pink-main);
+    transform: scale(1.1);
+}
+
+/* PENALTY MODAL STYLES */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-box {
+    background: var(--cream);
+    padding: 40px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-width: 320px;
+    width: 85%;
+    transform: scale(0.7);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 4px solid var(--pink-main);
+}
+
+.modal-overlay.show .modal-box {
+    transform: scale(1);
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.modal-title {
+    color: var(--pink-dark);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.modal-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+#flower-speech-bubble {
+    top: -20px;
+    right: -40px;
+    opacity: 1;
+    z-index: 100;
+    font-size: 0.8rem;
+    max-width: 120px;
+    white-space: normal;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+/* MINECRAFT STYLE BUBBLE */
+#flower-speech-bubble {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #000000;
+    padding: 8px 12px;
+    border: 3px solid #373737;
+    border-radius: 0px; /* Square corners like MC */
+    font-family: 'Courier New', Courier, monospace; /* Pixel-like font */
+    font-weight: bold;
+    font-size: 0.8rem;
+    white-space: normal;
+    text-align: center;
+    min-width: 120px;
+    max-width: 160px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 1; /* Force visibility */
+    display: block;
+    transition: opacity 0.2s steps(4); /* Steppy transition for pixel feel */
+}
+
+/* The little MC chat tail */
+#flower-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 5px);
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-right: 3px solid #373737;
+    border-bottom: 3px solid #373737;
+    transform: rotate(45deg);
+}
+
+.character.jump {
+    display: inline-block;
+    vertical-align: middle;
+}
